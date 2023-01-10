@@ -43,9 +43,8 @@ public class SimCard {
 		System.out.println("Numero sim: " + this.phoneNumber);
 		System.out.println("Credito residuo: " + this.credito);
 		System.out.println("Lista chiamate del numero " + this.phoneNumber);
-		System.out.println(listaChiamate[0].getNomeChiamata() + ", durata " + listaChiamate[0].getDurata() + " min");
-		System.out.println();
-		System.out.println(listaChiamate[1].getNomeChiamata() + ", durata " + listaChiamate[1].getDurata() + " min");
+		System.out.println("- " + listaChiamate[0].getNomeChiamata() + ", durata " + listaChiamate[0].getDurata() + " min");
+		System.out.println("- " + listaChiamate[1].getNomeChiamata() + ", durata " + listaChiamate[1].getDurata() + " min");
 	}
 
 }
