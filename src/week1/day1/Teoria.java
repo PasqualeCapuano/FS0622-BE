@@ -27,7 +27,6 @@ public class Teoria {
 		
 		System.out.println(v6);
 		System.out.println(v7);
-		//test
 	}
 
 }
