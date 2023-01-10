@@ -1,4 +1,4 @@
-package week1.day1;
+package day1;
 
 public class EsercizioApertura {
 

@@ -1,4 +1,4 @@
-package week1.day2;
+package day2;
 
 public class Chiamate {
 	
