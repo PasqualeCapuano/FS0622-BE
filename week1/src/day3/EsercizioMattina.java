@@ -19,6 +19,7 @@ public class EsercizioMattina {
 
 	}
 
+	
 	static void printBestStudentGender(char genere) {
 
 		Student best = new Student("", "", new double[] { 0 }, 'm');
