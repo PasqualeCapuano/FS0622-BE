@@ -34,14 +34,13 @@ public class Carrello {
 
 	
 	public void stampaCarrello() {
-		
 		System.out.println("Carrello di: " + this.clienteAssociato);
-		for(int i=0; i < elencoArticoli.length; i++) {
-			System.out.println("- " +elencoArticoli[i].getNomeProdotto() + " " + elencoArticoli[i].getPrezzoProdotto() + " €");
-		}
+		System.out.println("- " + elencoArticoli[0].getNomeProdotto() + ": " + elencoArticoli[0].getPrezzoProdotto() + " €"); 
+		System.out.println("- " + elencoArticoli[1].getNomeProdotto() + ": " + elencoArticoli[1].getPrezzoProdotto() + " €"); 
 	}
 	
 	public void totaleCarrello() {
-		System.out.println(elencoArticoli[0].getPrezzoProdotto() + elencoArticoli[1].getPrezzoProdotto() + " €");
+		System.out.println( "Totale prezzo articoli: " + (elencoArticoli[0].getPrezzoProdotto() + elencoArticoli[1].getPrezzoProdotto()) + " €" );
 	}
+	
 }

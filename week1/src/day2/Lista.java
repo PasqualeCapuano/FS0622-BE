@@ -1,7 +1,7 @@
 package day2;
 
 public class Lista {
-	
+
 	String nomeProdotto;
 	double prezzoProdotto;
 	
@@ -27,5 +27,4 @@ public class Lista {
 		this.prezzoProdotto = prezzoProdotto;
 	}
 	
-
 }

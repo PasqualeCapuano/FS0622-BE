@@ -3,7 +3,7 @@ package day2;
 public class Esercizio3 {
 
 	public static void main(String[] args) {
-
+		
 		Articolo a1 = new Articolo(1, "Maglietta bianca con stampa di un logo", 15, 5);
 		a1.stampaArticolo();
 		
@@ -26,21 +26,16 @@ public class Esercizio3 {
 		
 		Carrello cart = new Carrello("Flavio", 0);
 		
-		Lista lista1 = new Lista("Maglietta", 20.50);
+		Lista lista1 = new Lista("Maglietta", 15);
 		cart.getElencoArticoli()[0] = lista1;
 		
-		lista1 = new Lista("Pantalone", 30.24);
+		lista1 = new Lista("Pantalone", 20);
 		cart.getElencoArticoli()[1] = lista1;
-		
-		lista1 = new Lista("Mutande", 10.60);
-		cart.getElencoArticoli()[2] = lista1;
-		
 		
 		cart.stampaCarrello();
 		
-		System.out.println("-------------------------------");
-		
-		cart.totaleCarrello();
+		cart.totaleCarrello();		
+
 	}
 
 }
