@@ -2,7 +2,7 @@ package day3;
 
 import school.objects.Student;
 
-public class Main {
+public class EsercizioMattina {
 
 	static Student[] students;
 
