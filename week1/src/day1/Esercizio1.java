@@ -28,7 +28,7 @@ public class Esercizio1 {
 		System.out.println(frase + " è " + y);		
 		System.out.println("-----------------------------------------------------------");
 	}
-	
+	//test
 	
 	
 	public static void inserisciInArray() {
