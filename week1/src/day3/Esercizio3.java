@@ -17,7 +17,7 @@ public class Esercizio3 {
 		
 		do {
 			Scanner reader = new Scanner(System.in);
-			System.out.print("Digita una parola: ");
+			System.out.printf("%nDigita una parola: ");
 			p = reader.nextLine();
 			if(!p.equals(":q")) {
 				for(int i = 0; i < p.length(); i++) {
