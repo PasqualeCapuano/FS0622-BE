@@ -12,15 +12,20 @@ public class Esercizio3 {
 	static void divideString() {
 		
 		int t = 0;
+		
+		String p;
+		
+		do {
+			Scanner reader = new Scanner(System.in);
+			System.out.print("Digita una parola: ");
+			p = reader.nextLine();
+			if(!p.equals(":q")) {
+				for(int i = 0; i < p.length(); i++) {
+					
+					System.out.print(p.charAt(i) + ", ");
+				}
+			}
+		} while (!p.equals(":q"));
 
-		Scanner reader = new Scanner(System.in);
-		System.out.print("Digita una parola: ");
-		String p = reader.nextLine();
-		
-		
-		while(t < p.length()) {
-			System.out.println(p.charAt(t));
-			t++;
-		}
 	}
 }
