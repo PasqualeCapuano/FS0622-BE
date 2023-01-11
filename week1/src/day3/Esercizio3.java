@@ -10,20 +10,18 @@ public class Esercizio3 {
 	}
 
 	static void divideString() {
-		
+
 		int t = 0;
-		
+
 		String p;
-		
+
 		do {
 			Scanner reader = new Scanner(System.in);
 			System.out.printf("%nDigita una parola: ");
 			p = reader.nextLine();
-			if(!p.equals(":q")) {
-				for(int i = 0; i < p.length(); i++) {
-					
-					System.out.print(p.charAt(i) + ", ");
-				}
+			for (int i = 0; i < p.length(); i++) {
+
+				System.out.print(p.charAt(i) + ", ");
 			}
 		} while (!p.equals(":q"));
 
