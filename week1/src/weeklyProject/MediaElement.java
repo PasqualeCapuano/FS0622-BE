@@ -14,31 +14,47 @@ abstract public class MediaElement {
 	}
 
 	public void play() {
-		
-		
-		if(MediaElement.this instanceof Audio) {	
-			System.out.println();
-			for(int i = this.duration; i > 0; i--) {
-				System.out.println("Title: " + this.title.toUpperCase() + " - Duration: " + i + " - Volume: " + this.volume);
+
+		if (MediaElement.this instanceof Audio) {
+			for (int i = this.duration; i > 0; i--) {
+				System.out.printf("%n- Title: %s | volume: ", this.title);
+				for (int v = this.volume; v > 0; v--) {
+					System.out.print("!");
+				}
 			}
+
+			System.out.printf("%n-----------------------------------------------");
 			
-			System.out.println("-----------------------------------------------");
-		} else if(MediaElement.this instanceof Video) {
-			for(int i = this.duration; i > 0; i--) {
-				System.out.println("Title: " + this.title +  " - Duration: " + i + " - Volume: " + this.volume + " - Brightness: " + this.brightness);
+		} else if (MediaElement.this instanceof Video) {
+			for (int i = this.duration; i > 0; i--) {
+				
+				System.out.printf("%n- Title: %s | volume: ", this.title);
+				for (int v = this.volume; v > 0; v--) {
+					System.out.print("!");
+				}
+				System.out.printf(" | brightness: ");
+
+				for (int b = this.brightness; b > 0; b--) {
+					System.out.print("*");
+				}
+				
 			}
-			
-			System.out.println("-----------------------------------------------");
+
+			System.out.printf("%n-----------------------------------------------");
 		} else {
-			System.out.println("Per riprodurre l'immagine " + this.title.toUpperCase() + " usa il metodo: play();");
+			System.out.printf("%nErrore: Per riprodurre questo tipo di file usare il comando 'show();'");
 		}
-		
-		
+
 	}
 
 	public void show() {
-		System.out.println("Title: " + this.title + " - Brightness: " + this.brightness);
-		System.out.println("-----------------------------------------------");
+		System.out.printf("%n- Title: %s", this.title);
+		System.out.printf(" | brightness: ");
+		for (int v = this.brightness; v > 0; v--) {
+			System.out.print("*");
+		}
+		
+		System.out.printf("%n-----------------------------------------------");
 	}
 
 }

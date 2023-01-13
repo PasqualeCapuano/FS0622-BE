@@ -18,6 +18,8 @@ public class Main {
 		v1.addVolume();
 		v1.addVolume();
 		v1.addVolume();
+		v1.addBrightness();
+		v1.addBrightness();
 		v1.play();
 		p1.addBrightness();
 		p1.show();

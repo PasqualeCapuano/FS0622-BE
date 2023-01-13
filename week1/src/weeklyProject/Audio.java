@@ -14,7 +14,7 @@ public class Audio extends MediaElement implements Volume {
 		if (volume < 10) {
 			return volume++;
 		} else {
-			System.out.println("IL VOLUME E' GIA' AL MASSIMO!");
+			System.out.println("Max volume!");
 		}
 		return volume;
 	}
@@ -24,7 +24,7 @@ public class Audio extends MediaElement implements Volume {
 		if (volume > 0) {
 			return volume--;
 		} else {
-			System.out.println("IL VOLUME E' GIA' AL MINIMO!");
+			System.out.println("Min volume!");
 		}
 		return volume;
 
