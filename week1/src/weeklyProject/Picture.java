@@ -27,5 +27,9 @@ public class Picture extends MediaElement implements Brightness{
 		}
 		return brightness;
 	}
-
+	
+	@Override
+    public String toString() {
+        return " " + this.title;
+    }
 }

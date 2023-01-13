@@ -30,4 +30,9 @@ public class Audio extends MediaElement implements Volume {
 
 	}
 
+	@Override
+    public String toString() {
+        return "PICTURE - " + "Picture title: " + this.title + " Duration:" + this.duration;
+    }
+	
 }

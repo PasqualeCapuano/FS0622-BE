@@ -49,5 +49,10 @@ public class Video extends MediaElement implements Brightness, Volume{
 		}
 		return brightness;
 	}
+	
+	@Override
+    public String toString() {
+        return "VIDEO - " + "Video title: " + this.title + " Duration:" + this.duration;
+    }
 
 }

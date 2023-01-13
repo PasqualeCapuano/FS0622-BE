@@ -42,7 +42,7 @@ abstract public class MediaElement {
 
 			System.out.printf("%n-----------------------------------------------");
 		} else {
-			System.out.printf("%nErrore: Per riprodurre questo tipo di file usare il comando 'show();'");
+			show();
 		}
 
 	}
@@ -56,5 +56,5 @@ abstract public class MediaElement {
 		
 		System.out.printf("%n-----------------------------------------------");
 	}
-
+	
 }
