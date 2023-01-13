@@ -79,30 +79,31 @@ public class Main {
 			
 			for (int i = 0; i < counter; i++) {
 				x++;
-				System.out.println(x + " - PICTURE - " + array[i]);
+				System.out.println(x + " " + array[i]);
 			}
 			System.out.println("Decide a media:");
 			
 			int decideMedia = in4.nextInt();
 			
 			switch(decideMedia) {
+			case(0): 
+				break;
 			case(1):
-				array[0].play();
+				control(array[0]);
 				break;
 			case(2):
-				array[1].play();
+				control(array[1]);
 				break;
 			case(3):
-				array[2].play();
+				control(array[2]);
 				break;
 			case(4):
-				array[3].play();
+				control(array[3]);
 				break;
 			case(5):
-				array[4].play();
+				control(array[4]);
 				break;
 			}
-			
 			
 		} else {
 			System.out.println("Error");
@@ -110,6 +111,62 @@ public class Main {
 		}
 
 	}
-
+	
+	
+	public static void control(MediaElement array) {
+		if(array instanceof Audio) {
+			Scanner in = new Scanner(System.in);
+			System.out.println("1 - Play audio");
+			System.out.println("2 - Turn up the volume");
+			System.out.println("---------------------------------------");
+			int select = in.nextInt();
+			if(select == 1) {
+				((Audio) array).play();
+			} else if (select == 2) {
+				((Audio) array).addVolume();
+				System.out.println("Volume turned up!");
+				System.out.println("---------------------------------------");
+				control(array);
+			}
+		}  else if (array instanceof Video) {
+			Scanner in = new Scanner(System.in);
+			System.out.println("1 - Play video");
+			System.out.println("2 - Turn up the volume");
+			System.out.println("3 - Turn up brightness");
+			System.out.println("Selezione: ");
+			int select = in.nextInt();
+			if(select == 1) {
+				((Video) array).play();
+			} else if (select == 2) {
+				((Video) array).addVolume();
+				System.out.println("Volume turned up!");
+				control(array);
+				
+			} else if (select == 3) {
+				((Video) array).addBrightness();
+				System.out.println("Brightness turned up!");
+				System.out.println("---------------------------------------");
+				control(array);
+			} 
+			
+		} else if (array instanceof Picture) {
+			Scanner in = new Scanner(System.in);
+			System.out.println("1 - Show picture");
+			System.out.println("2 - Turn up brightness");
+			System.out.println("Selezione: ");
+			int select = in.nextInt();
+			if(select == 1) {
+				((Video) array).play();
+			} else if (select == 2) {
+				((Video) array).addBrightness();
+				System.out.println("Brightness turned up!");
+				control(array);
+				
+			}
+		}
+		
+	}
+	
+	
 
 }
