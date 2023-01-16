@@ -36,6 +36,7 @@ public class Esercizio1 {
 				System.out.println("- In che indice dell'array?");
 				Scanner pos = new Scanner(System.in);
 				position = pos.nextInt();
+				
 
 				if (newValue > 0) {
 					for (int i = numbers.length - 1; i > position; i--) {
@@ -46,7 +47,7 @@ public class Esercizio1 {
 					System.out.println("- Nuovo Array: " + Arrays.toString(numbers));
 					System.out.println("------------------------------------------");
 				} else {
-					System.out.println("Numero troppo basso, devi inserire un numero maggiore di zero");
+					System.out.println("Programma terminato perchè hai inserito 0");
 					val.close();
 				}
 			} while (newValue != 0);
