@@ -2,25 +2,26 @@ package day1;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Esercizio1 {
-
+	
+	
 	public static void main(String[] args) {
-		create();
+		create();				
 	}
 
 	public static void create() {
 		
+		
 		try {
 			int[] numbers = new int[5];
 			
-
+			Random numR = new Random();
+						
 			for (int i = 0; i < numbers.length; i++) {
-				int minVal = 1;
-				int maxVal = 10;
-				numbers[i] = ThreadLocalRandom.current().nextInt(minVal, maxVal);
+				numbers[i] = numR.nextInt(11);
 			}
 			
 			int position = 0;
@@ -34,9 +35,9 @@ public class Esercizio1 {
 			Scanner val = new Scanner(System.in);
 			newValue = val.nextInt();
 
-			System.out.println("- In che posizione?");
+			System.out.println("- In che indice dell'array?");
 			Scanner pos = new Scanner(System.in);
-			position = pos.nextInt() - 1;
+			position = pos.nextInt();
 
 			if (newValue > 0) {
 				for (int i = numbers.length - 1; i > position; i--) {
@@ -53,6 +54,8 @@ public class Esercizio1 {
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("Formato non corretto, inserisci un numero valido");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Posizione fuori dal limite dell'array");
 		}
 
 	}
