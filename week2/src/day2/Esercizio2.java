@@ -21,10 +21,10 @@ public class Esercizio2 {
 
 	}
 	
-	public static List<Integer> createRandomList(int N) {
+	public static List<Integer> createRandomList(int n) {
         List<Integer> list = new ArrayList<>();
         Random rand = new Random();
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             list.add(rand.nextInt(101));
         }
         Collections.sort(list);
