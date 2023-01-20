@@ -21,7 +21,9 @@ public class Archivio {
 	static ArrayList<Libro> libri = new ArrayList<>();
 	static ArrayList<Rivista> riviste = new ArrayList<>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		
+		ArrayList<String> archivio = new ArrayList<>(FileUtils.readLines(fileInfo, ENCODING));
 		
 		boolean continuazioneProgramma = true;
 		
@@ -32,7 +34,7 @@ public class Archivio {
 			  System.out.println( "3 - Ricerca elemento tramite codice ISBN" );
 			  System.out.println( "4 - Ricerca elemento per anno" );
 			  System.out.println( "5 - Ricerca elemento per autore" );
-			  System.out.println( "5 - Mostra archivio" );
+			  System.out.println( "6 - Mostra archivio" );
 			  System.out.println( "--------------------------------------------------" );
 			  System.out.println( "- Seleziona una funzione: " );
 			  int selezione = Integer.parseInt(in.nextLine());
@@ -67,12 +69,23 @@ public class Archivio {
 			  		System.out.println("Elemento rimosso con successo!");
 			  		break;
 			  	case (3):
+			  		System.out.println("inserisci il codice ISBN dell'elemento da trovare: ");
+			  		long isbnRicerca = Long.parseLong(in.nextLine());
+			  		archivio.stream().filter((e) -> e.contains(Long.toString(isbnRicerca))).forEach((e) -> System.out.println(e));
 			  		break;
 			  	case (4):
+			  		System.out.println("inserisci l'anno dell'elemento da trovare: ");
+			  	int annoRicerca = Integer.parseInt(in.nextLine());
+		  		archivio.stream().filter((e) -> e.contains(Integer.toString(annoRicerca))).forEach((e) -> System.out.println(e));
 			  		break;
 			  	case (5):
+			  		System.out.println("inserisci il nome dell'autore dell'elemento da trovare: ");
+			  	String autoreRicerca = in.nextLine();
+		  		archivio.stream().filter((e) -> e.contains(autoreRicerca)).forEach((e) -> System.out.println(e));
 			  		break;
 			  	case (6):
+			  		System.out.printf("I contenuti del file %s sono: %n", fileInfo);
+			  		System.out.println(FileUtils.readFileToString(fileInfo, ENCODING));
 			  		break;
 			  }
 			  
