@@ -1,192 +1,193 @@
 package progettoSettimanale;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
 
-import java.util.Random;
-
 public class Archivio {
 	
-	private static final String ENCODING = "utf-8";
-	
-	static String fileName = "archivio.txt";
-	static File fileInfo = new File(fileName);
-	
 	static Scanner in = new Scanner(System.in);
-	static ArrayList<Libro> libri = new ArrayList<>();
-	static ArrayList<Rivista> riviste = new ArrayList<>();
-
+	static String fileName = "archivio.txt";
+    static File fileInfo = new File(fileName);
+    private static final String ENCODING = "utf-8";
+    
+	
 	public static void main(String[] args) throws IOException {
 		
-		ArrayList<String> archivio = new ArrayList<>(FileUtils.readLines(fileInfo, ENCODING));
+		 ArrayList<String> archivio = new ArrayList<>(FileUtils.readLines(fileInfo, ENCODING));
 		
-		boolean continuazioneProgramma = true;
 		
-		do {
-			System.out.println( "--- Benvenuto nell'archivio della biblioteca ---" );  
-			  System.out.println( "1 - Aggiungi un elemento" );
-			  System.out.println( "2 - Rimuovi elemento tramite codice ISBN" );
-			  System.out.println( "3 - Ricerca elemento tramite codice ISBN" );
-			  System.out.println( "4 - Ricerca elemento per anno" );
-			  System.out.println( "5 - Ricerca elemento per autore" );
-			  System.out.println( "6 - Mostra archivio" );
-			  System.out.println( "--------------------------------------------------" );
-			  System.out.println( "- Seleziona una funzione: " );
-			  int selezione = Integer.parseInt(in.nextLine());
-			  System.out.println( "--------------------------------------------------" );
-			  switch(selezione) {
-			  	case (1):
-			  		System.out.println( "1 - Aggiungi libro" );
-			  		System.out.println( "2 - Aggiungi rivista" );
-			  		System.out.println( "- Inserisci tipo: " );  
-			  		int selezioneTipo = Integer.parseInt(in.nextLine());
-			  		if( selezioneTipo == 1 ) {
-			  			aggiungiLibro();
-			  		} else if (selezioneTipo == 2) {
-			  			aggiungiRivista();
-			  		} else {
-			  			System.out.println( "- Il tipo selezionato non esiste!" );
-			  		}
-			  		break;
-			  	case (2):
-			  		System.out.println( "- Digita il codice ISBN del libro da rimuovere:" );
-			  	 	long codiceIsbn = Long.parseLong(in.nextLine());
-			  		libri.removeIf(o -> o.getCodiceIsbn() == codiceIsbn);
-			  		riviste.removeIf(o -> o.getCodiceIsbn() == codiceIsbn);
-			  		
-			  		try {
-			  			ArrayList<String> lines = new ArrayList<>(FileUtils.readLines(fileInfo, ENCODING));
-			  			lines.removeIf(line -> line.contains(Long.toString(codiceIsbn)));
-			  			FileUtils.writeLines(fileInfo, lines);
-			  		}catch(IOException e) {
-			  			e.printStackTrace();
-			  		}
-			  		System.out.println("Elemento rimosso con successo!");
-			  		break;
-			  	case (3):
-			  		System.out.println("inserisci il codice ISBN dell'elemento da trovare: ");
-			  		long isbnRicerca = Long.parseLong(in.nextLine());
-			  		archivio.stream().filter((e) -> e.contains(Long.toString(isbnRicerca))).forEach((e) -> System.out.println(e));
-			  		break;
-			  	case (4):
-			  		System.out.println("inserisci l'anno dell'elemento da trovare: ");
-			  	int annoRicerca = Integer.parseInt(in.nextLine());
-		  		archivio.stream().filter((e) -> e.contains(Integer.toString(annoRicerca))).forEach((e) -> System.out.println(e));
-			  		break;
-			  	case (5):
-			  		System.out.println("inserisci il nome dell'autore dell'elemento da trovare: ");
-			  	String autoreRicerca = in.nextLine();
-		  		archivio.stream().filter((e) -> e.contains(autoreRicerca)).forEach((e) -> System.out.println(e));
-			  		break;
-			  	case (6):
-			  		System.out.printf("I contenuti del file %s sono: %n", fileInfo);
-			  		System.out.println(FileUtils.readFileToString(fileInfo, ENCODING));
-			  		break;
-			  }
-			  
-			  System.out.println("Vuoi continuare? (S/N)");
-			  String input = in.nextLine();
-			  continuazioneProgramma = input.equalsIgnoreCase("S");
-			    
-		} while(continuazioneProgramma);
-		  
+		boolean continuaProgramma = true;
 
-	}
+		do {
+		System.out.println("BENVENUTI NELL'ARCHIVIO");
+		System.out.println("1 - AGGIUNGI ELEMENTO");
+		System.out.println("2 - RIMUOVI ELEMENTO TRAMITE ISBN");
+		System.out.println("3 - RICERCA ELEMENTO TRAMITE ISBN");
+		System.out.println("4 - RICERCA ELEMENTO PER ANNO");
+		System.out.println("5 - RICERCA ELEMENTO PER AUTORE");
+		System.out.println("6 - MOSTRA ARCHIVIO");
+		System.out.println("0 - ABBANDONA ARCHIVIO");
+		System.out.println("---------------------------------------------");
+		System.out.println("Seleziona un numero: ");
+		try {
+			 int selezione = Integer.parseInt(in.nextLine());
+			 switch(selezione) {
+				case(1):
+					System.out.println("1 - Libri");
+					System.out.println("2 - Riviste");
+					System.out.println("inserisci tipo: ");
+					int selezioneTipo = Integer.parseInt(in.nextLine());
+					if(selezioneTipo == 1) {
+						aggiungiLibro();
+					} else {
+						aggiungiRivista();
+					}
+					break;
+				case(2):
+				System.out.println("Inserisci il codice ISBN da rimuovere: ");
+				long isbnRimuovi = Long.parseLong(in.nextLine());
+				 archivio.removeIf(line -> line.contains(Long.toString(isbnRimuovi)));
+			     FileUtils.writeLines(fileInfo, archivio);
+			
+				 System.out.println("Elemento rimosso con successo!");
+				 
+				break;
+				case(3):
+					System.out.println("Inserisci il codice ISBN dell'elemento da trovare: ");
+					long isbnRicerca = Long.parseLong(in.nextLine());
+					archivio.stream().filter((e) -> e.contains(Long.toString(isbnRicerca))).forEach((e) -> System.out.println(e));
+					break;
+				case(4):
+					System.out.println("Inserisci l'anno dell'elemento da trovare: ");
+				int annoRicerca = Integer.parseInt(in.nextLine());
+				archivio.stream().filter((e) -> e.contains(Integer.toString(annoRicerca))).forEach((e) -> System.out.println(e));
+				break;
+				case(5):
+					System.out.println("Inserisci l'autore dell'elemento da trovare: ");
+				String autoreRicerca = in.nextLine();
+				archivio.stream().filter((e) -> e.contains(autoreRicerca)).forEach((e) -> System.out.println(e));
+				break;
+				case(6):
+					System.out.println("Carico il nostro archivio...");
+		  		System.out.println(FileUtils.readFileToString(fileInfo, ENCODING));
+		  		break;
+				case(0):
+					System.out.println("Grazie per aver visitato il nostro archivio!");
+					System.exit(0);
+				break;
+				default:
+					System.out.println("Valore errato o non esistente!");
+					break;
+				}
+		} catch(NumberFormatException e) {
+			System.out.println("ERRORE! hai inserito un valore diverso da un numero!");
+		}
+		
+		
+			
+		
+		System.out.println("Vuoi continuare? (S/N)");
+	    String input = in.nextLine();
+	    continuaProgramma = input.equalsIgnoreCase("S");
+	} while(continuaProgramma);
+}
+
+	
+	
 	
 	public static void aggiungiLibro() {
-		System.out.println( "- Inserisci titolo: " );
+		System.out.println("inserisci titolo: ");
 		String titolo = in.nextLine();
-  		System.out.println( "- Inserisci anno di pubblicazione: " );
-  		int anno = Integer.parseInt(in.nextLine());
-  		System.out.println( "- Inserisci numero pagine: " );
-  		int nPagine = Integer.parseInt(in.nextLine());
-  		System.out.println( "- Inserisci autore: " );
-  		String autore = in.nextLine();
-  		System.out.println( "- Inserisci genere: " );
-  		String genere = in.nextLine();
-  		
-  		Libro libro = new Libro(generatoreIsbn(), titolo, anno, nPagine, autore, genere);
-  		
-  		libri.add(libro);
-  		
-  		String libroAgg = libro.toString();
-  		try {
-  			scriviInArchivio(fileInfo, libroAgg + System.lineSeparator(), true);
-			
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-  		
-  		System.out.println( "Libro aggiunto correttamente!" );
-  		
+		System.out.println("inserisci anno di pubblicazione: ");
+		int anno = Integer.parseInt(in.nextLine());
+		System.out.println("inserisci numero pagine: ");
+		int nPagine = Integer.parseInt(in.nextLine());
+		System.out.println("inserisci autore: ");
+		String autore = in.nextLine();
+		System.out.println("inserisci genere: ");
+		String genere = in.nextLine();
+		
+		
+		
+		Libro libro = new Libro(generatoreISBN(), titolo, anno, nPagine, autore, genere );
+		
+		String aggiungiLibro = libro.toString();
+		try {
+			writeOnFile(fileInfo, aggiungiLibro + System.lineSeparator(), true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("LIBRO AGGIUNTO CON SUCCESSO!");
+		
 	}
 	
+	
 	public static void aggiungiRivista() {
-		System.out.println( "Inserisci titolo: " );
+		System.out.println("inserisci titolo: ");
 		String titolo = in.nextLine();
-		System.out.println( "Inserisci anno di pubblicazione: " );
+		System.out.println("inserisci anno di pubblicazione: ");
 		int anno = Integer.parseInt(in.nextLine());
-		System.out.println( "Inserisci numero pagine: " );
+		System.out.println("inserisci numero pagine: ");
 		int nPagine = Integer.parseInt(in.nextLine());
-		System.out.println( "1 - settimanale" );
-		System.out.println( "2 - mensile" );
-		System.out.println( "3 - semestrale" );
-		System.out.println( "Inserisci periodicitÃ : " );
+		System.out.println("1 - settimanale");
+		System.out.println("2 - mensile");
+		System.out.println("3 - semestrale");
+		System.out.println("Inserisci periodicita: ");
 		int selezione = Integer.parseInt(in.nextLine());
 		Periodicita periodicita = null;
 		switch(selezione) {
-			case (1):
-				periodicita =  Periodicita.SETTIMANALE;
-				break;
-			case (2):
-				periodicita =  Periodicita.MENSILE;
-				break;
-			case (3):
-				periodicita =  Periodicita.SEMESTRALE;
-				break;
+		case(1):
+			periodicita = Periodicita.SETTIMANALE;
+			break;
+		case(2):
+			periodicita = Periodicita.MENSILE;
+		break;
+		case(3):
+			periodicita = Periodicita.SEMESTRALE;
+		break;
+		default:
+			System.out.println("Valore errato!");
+		break;
 		}
-				
-		Rivista rivista = new Rivista(generatoreIsbn(), titolo, anno, nPagine, periodicita);
 		
-		riviste.add(rivista);
-		String rivistaAgg = rivista.toString();
+		Rivista rivista = new Rivista(generatoreISBN(), titolo, anno, nPagine, periodicita);
+		
+		String aggiungiRivista = rivista.toString();		
 		try {
-			scriviInArchivio(fileInfo, rivistaAgg + System.lineSeparator(), true);
-			
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+			writeOnFile(fileInfo, aggiungiRivista + System.lineSeparator(), true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		System.out.println( "Rivista aggiunto correttamente!" );
-	}
+		System.out.println("RIVISTA AGGIUNTA CON SUCCESSO!");
+				
+		}
 	
-	public static long generatoreIsbn() {
-		HashSet<Long> setIsbn = new HashSet<>();
-		Random numR = new Random();
-		long inizioCodice = 9000000000000L;
-		long fineCodice = 9999999999999L;
+	public static long generatoreISBN() {
+		HashSet<Long> setISBN = new HashSet<>();
+		Random random = new Random();
+		long inizio = 9000000000000L;
+		long fine = 9999999999999L;
 		
-        long nuovoIsbn = 0;
+        long nuovoISBN = 0;
         
         do {
-            nuovoIsbn = inizioCodice + (long)(numR.nextDouble()*(fineCodice - inizioCodice));
-        } while (setIsbn.contains(nuovoIsbn));
+            nuovoISBN = inizio + (long)(random.nextDouble()*(fine - inizio));
+        } while (setISBN.contains(nuovoISBN));
         
-        setIsbn.add(nuovoIsbn);
-        return nuovoIsbn;
+        setISBN.add(nuovoISBN);
+        return nuovoISBN;
 	}
 	
-	public static void scriviInArchivio(File f, String s, boolean append) throws IOException {
-		FileUtils.writeStringToFile(f, s, ENCODING, append);
-	}
+	public static void writeOnFile(File f, String s, boolean append) throws IOException {
+        FileUtils.writeStringToFile(f, s, ENCODING, append);
+    }
 	
-	public static void eliminaDaArchivio(File f) throws IOException {
-		FileUtils.readFileToString(f, ENCODING);
-	}
+	
 
-}
+	}
