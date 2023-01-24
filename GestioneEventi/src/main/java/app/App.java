@@ -9,9 +9,9 @@ public class App extends EventoDAO {
 
 	public static void main(String[] args) {
 		
-		boolean insertEvento = false;
+		boolean insertEvento = true;
 		boolean deleteEvento = false;
-		boolean getEvento = true;
+		boolean getEvento = false;
 		boolean updateEvento = false;
 		
 		if( insertEvento ) {
