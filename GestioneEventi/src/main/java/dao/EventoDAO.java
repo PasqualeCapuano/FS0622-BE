@@ -2,98 +2,88 @@ package dao;
 
 import java.time.LocalDate;
 
-import models.Evento;
-import models.TipoEvento;
+import javax.persistence.EntityManager;
+
+import entities.Evento;
+import entities.TipoEvento;
 import utils.JpaUtil;
 
-public class EventoDAO extends JpaUtil{
-	
-public static void inserisciEvento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoevento, int nmaxpartecipanti) {
+public class EventoDAO extends JpaUtil {
+
+	public void save(Evento ev) {
 		
 		try {
-			Evento e = new Evento();
-			e.setTitolo(titolo);
-			e.setDataEvento(dataEvento);
-			e.setDescrizione(descrizione);
-			e.setTipoEvento(tipoevento);
-			e.setNumeroMassimoPartecipanti(nmaxpartecipanti);
+			
 			t.begin();
-			em.persist(e);
+			em.persist(ev);
 			t.commit();
 			
-			System.out.println("Evento inserito correttamente!");
+			System.out.println( "Evento inserito correttamente" );
+		} catch(Exception e) {
+			System.out.println( "ERRORE durante l'inserimento dell'evento!!" );
 		}
-		catch(Exception e) {
-			System.out.println("Errore nell'inserimento dell'evento");
+		
+	}
+	
+	public static void getEventoById(int id) {
+		
+		Evento e = em.find(Evento.class, id);
+		
+		if( e == null ) {
+			System.out.println( "L'evento con l'id " + id + " non è stato trovato!" );
+			return;
 		}
 		
-	}
-
-public static void getEventoById(int id) {
-	Evento e = em.find(Evento.class, id);
-	
-	if( e == null ) {
-		System.out.println( "L'evento con l'id " + id + " non è stato trovato!" );
-		return;
+		System.out.println( "Dati evento #" + id );
+		System.out.printf(  
+			"Titolo: %s | Data evento: %s | Descrizione: %s | Tipo evento: %s | Massimo partecipanti: %d%n",
+			e.getTitolo(), e.getDataEvento(), e.getDescrizione(), e.getTipoEvento(), e.getNumeroMaxPartecipanti()
+		);
 	}
 	
-	System.out.println( "Dati Evento #" + id );
-	System.out.printf(  
-		"Titolo: %s | Data evento: %s | Descrizione: %s | Tipo: %s | Nmax Partecipanti: %d%n",
-		e.getTitolo(), e.getDataEvento().toString(), e.getDescrizione(), e.getTipoEvento(), e.getNumeroMassimoPartecipanti()
-	);
-}
-
-public static void deleteEventoById(int id) {
-	Evento e = em.find(Evento.class, id);
-	
-	if( e == null ) {
-		System.out.println( "L'Evento con l'id " + id + " non è stato trovato!" );
-		return;
-	}
-	
-	t.begin();
-	em.remove(e);
-	t.commit();
-	
-	System.out.println( "L'Evento con l'id " + id + " è stato eliminato!" );
-}
-
-public static void persist(Object entity) {
-	t.begin();
-	em.persist(entity);
-	t.commit();
-}
-
-public static Evento getEvento(int id) {
-	Evento e = em.find(Evento.class, id);
-	
-	if( e == null ) {
-		System.out.println( "L'Evento con l'id " + id + " non è stato trovato!" );
-		return null;
-	}
-	
-	return e;
-}
-
-public static void updateEventoById(int id, String titolo, LocalDate dataevento, String descrizione, TipoEvento tipoevento, int nmaxpartecipanti) {
-	Evento ev = getEvento(id);
-	if( ev == null ) return;
-	
-	try {
-		ev.setTitolo(titolo);
-		ev.setDataEvento(dataevento);
-		ev.setDescrizione(descrizione);
-		ev.setTipoEvento(tipoevento);
-		ev.setNumeroMassimoPartecipanti(nmaxpartecipanti);
+	public static void eliminaEventoByID(int id) {
+		Evento e = em.find(Evento.class, id);
 		
-		persist(ev);
+		if( e == null ) {
+			System.out.println( "L'evento con l'id " + id + " non è stato trovato!" );
+			return;
+		}
 		
-		System.out.println("L'Evento con l'id " + id + " è stato aggiornato!");
-	}
-	catch(Exception e) {
-		System.out.println( "Errore nella modifica dell'Evento!" );
+		t.begin();
+		em.remove(e);
+		System.out.println( "Evento eliminato correttamente!" );
+		t.commit();
 	}
 	
-}
+	public static void persist(Object entity) {
+		t.begin();
+		em.persist(entity);
+		t.commit();
+	}
+	
+	public static Evento getEvento(int id) {
+		
+		Evento e = em.find(Evento.class, id);
+		if(e == null) {
+			System.out.println( "L'evento con l'id " + id + " non è stato trovato!" );
+			return null;
+		}
+		
+		return e;
+	}
+	
+	public void refresh(Evento evento) {
+		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		try {
+
+			em.refresh(evento);
+
+		} finally {
+			em.close();
+		}
+
+	}
+	
+	
+	
 }

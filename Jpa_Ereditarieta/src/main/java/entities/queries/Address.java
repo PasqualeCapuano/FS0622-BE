@@ -1,38 +1,33 @@
-package models;
+package entities.queries;
 
-import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
-@Table(name = "eventi")
+@Table(name = "address")
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
-public class Evento {
+public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String road;
 	
-	int id;
-	String titolo;
-	LocalDate dataEvento;
-	String descrizione;
-	@Enumerated(EnumType.STRING)
-	TipoEvento tipoEvento;
-	int numeroMassimoPartecipanti;
+	@OneToMany(mappedBy = "address")
+	private List<Person> people;
 
-	
-	
 }

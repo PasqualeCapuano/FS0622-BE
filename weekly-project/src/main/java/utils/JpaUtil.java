@@ -5,9 +5,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+
 public class JpaUtil {
 
-	private static final String persistenceUnit = "GestioneEventi";
+	private static final String persistenceUnit = "weekly-project-3-BE";
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
 	protected static final EntityManager em = emf.createEntityManager();
 	protected static final EntityTransaction t = em.getTransaction();
@@ -26,5 +27,5 @@ public class JpaUtil {
 	public static EntityManagerFactory getEntityManagerFactory() {
 		return emf;
 	}
-	
+
 }
