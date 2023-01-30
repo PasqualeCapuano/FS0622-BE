@@ -23,6 +23,12 @@ import enums.TipoMezzo;
 public class App {
 
 	public static void main(String[] args) {
+		saveInDB();
+	}
+	
+	//metodo app
+		
+	public static void saveInDB() {
 		saveAutobus();
 		saveTram();
 		saveBiglietto();
