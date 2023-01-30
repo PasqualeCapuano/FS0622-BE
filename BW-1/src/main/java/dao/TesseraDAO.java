@@ -1,5 +1,6 @@
 package dao;
 
+import ch.qos.logback.classic.Logger;
 import entities.Tessera;
 import utils.JpaUtils;
 

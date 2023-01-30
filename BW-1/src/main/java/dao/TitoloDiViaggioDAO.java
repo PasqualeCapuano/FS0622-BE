@@ -14,7 +14,7 @@ public class TitoloDiViaggioDAO extends JpaUtils{
 
 			System.out.println("Elemento inserito correttamente!");
 		} catch (Exception e) {
-			System.out.println("Errore nell'inserimento dell'Elemento");
+			System.out.println("Errore nell'inserimento dell'Elemento" + e);
 		}
 
 	}
