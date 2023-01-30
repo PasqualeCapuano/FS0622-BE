@@ -110,20 +110,20 @@ public class App {
 
 	public static void main(String[] args) {
 
-		//Libro libro = saveLibro();
+		Libro libro = saveLibro();
 		
-		//Utente utente = saveUtente();
+		Utente utente = saveUtente();
 		
-		//Rivista rivista = saveRivista();
+		Rivista rivista = saveRivista();
 		
 		//searchISBN();
 		//searchAutore();
 		//searchAnno();
 		//searchTitoloParz();
-		searchTessera();
+		//searchTessera();
 		//searchScaduti();
 		
-		//Prestito prestito = savePrestito(utente, libro);
+		Prestito prestito = savePrestito(utente, libro);
 		
 		
 		

@@ -6,9 +6,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 
-public class JpaUtil {
+public class JpaUtils {
 
-	private static final String persistenceUnit = "weekly-project";
+	private static final String persistenceUnit = "BW-1";
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
 	protected static final EntityManager em = emf.createEntityManager();
 	protected static final EntityTransaction t = em.getTransaction();
