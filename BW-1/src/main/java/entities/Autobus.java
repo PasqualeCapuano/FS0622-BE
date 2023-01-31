@@ -1,5 +1,6 @@
 package entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,11 +14,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="autobus")
+@Table(name = "autobus")
+@DiscriminatorValue("Autobus")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Autobus extends Mezzo{
+public class Autobus extends Mezzo {
+
 	@Enumerated(EnumType.STRING)
 	private TappeAutobus partenza;
 	@Enumerated(EnumType.STRING)
@@ -31,8 +34,5 @@ public class Autobus extends Mezzo{
 		this.partenza = partenza;
 		this.capolinea = capolinea;
 	}
-	
-	
-	
 	
 }

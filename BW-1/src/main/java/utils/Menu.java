@@ -28,6 +28,7 @@ public class Menu {
 	
 	static Scanner sc = new Scanner(System.in);
 	static final Logger logger = LoggerFactory.getLogger(JpaUtils.class);
+	static int selezione;
 	
 	public static void runApp() {
 		final String ANSI_RESET = "\u001B[0m";
@@ -37,18 +38,19 @@ public class Menu {
 		try {
 			System.out.println("Benvenuto a Roma!");
 		    System.out.println(ANSI_RED + "-------------------------------------------" + ANSI_RESET);
-			System.out.println("1 - Stazione Termini");
-			System.out.println("2 - Stazione Tiburtina");
+			System.out.println("1 - Stazione Tiburtina");
+			System.out.println("2 - Stazione Termini");
 			System.out.println("Da che stazione vuoi partire? <---");
-			int selezione = sc.nextInt();
-			sc.nextLine();
+			selezione = sc.nextInt();
 
 			switch (selezione) {
 			case (1):
-				System.out.println("Hai scelto Stazione Termini");
+				System.out.println("Hai scelto Stazione Tiburtina");
+				System.out.println("Benvenuto dal rivenditore");
 				break;
 			case (2):
-				System.out.println("Hai scelto Stazione Tiburtina");
+				System.out.println("Hai scelto Stazione Termini");
+				System.out.println("Benvenuto nel distributore");
 				break;
 			default:
 				logger.error("Valore non presente nella lista!");
@@ -100,7 +102,7 @@ public class Menu {
 	}
 
 	public static void acquistaTitoloDiViaggio() {
-		System.out.println("1 - Biglietto ordinario");
+		System.out.println("1 - Biglietto ordinario (" + TicketingDAO.getTicketNumber(selezione) + " biglietti rimanenti)");
 		System.out.println("2 - Abbonamento");
 		System.out.println("Scegli cosa comprare <---");
 		int selezione3 = sc.nextInt();
@@ -108,20 +110,21 @@ public class Menu {
 		switch (selezione3) {
 		case (1):
 			saveBiglietto();
+			TicketingDAO.getTicketingById(selezione);
 			break;
 		case (2):
 			acquistaAbbonamento();
+			TicketingDAO.getTicketingById(selezione);
 			break;
 		default:
 			logger.error("Valore non presente nella lista!");
 		}
 	}
-
+	
 	public static void scegliMezzo() {
 		
 	}
 
-	
 	public static Biglietto saveBiglietto() {
 		Biglietto b = new Biglietto();
 		b.setDataEmissione(LocalDate.now());
@@ -132,7 +135,6 @@ public class Menu {
 		return b;
 	}
 
-	
 	public static void acquistaAbbonamento() {
 		System.out.println("Inserisci il tuo numero tessera");
 		long nTessera = sc.nextLong();
@@ -166,10 +168,11 @@ public class Menu {
 		return a;
 	}
 	
-	
-
 	public static Distributore saveDistributore() {
-		Distributore d = new Distributore(100, "Roma", true);
+		Distributore d = new Distributore();
+		d.setCounterBiglietti(100);
+		d.setInServizio(true);
+		d.setLuogo("Stazione Tiburtina");
 
 		TicketingDAO ticketingDAO = new TicketingDAO();
 		ticketingDAO.save(d);
@@ -177,7 +180,9 @@ public class Menu {
 	}
 
 	public static Rivenditore saveRivenditore() {
-		Rivenditore r = new Rivenditore(100, "Bologna");
+		Rivenditore r = new Rivenditore();
+		r.setCounterBiglietti(50);
+		r.setLuogo("Stazione Termini");
 
 		TicketingDAO ticketingDAO = new TicketingDAO();
 		ticketingDAO.save(r);
@@ -185,7 +190,7 @@ public class Menu {
 	}
 
 	public static Utente saveUtente() {
-		Utente u = new Utente("Padre", "Figlio", "spirito@santo.amen");
+		Utente u = new Utente("Mario", "Rossi", "mario.rossi@gmail.com");
 
 		UtenteDAO utenteDAO = new UtenteDAO();
 		utenteDAO.save(u);

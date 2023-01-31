@@ -1,28 +1,41 @@
 package entities.abstracts;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
+import entities.Distributore;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Table(name = "ticketing")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "ticketing_type", discriminatorType = DiscriminatorType.STRING)
+@Getter
+@Setter
 @NoArgsConstructor
-public abstract class Ticketing {
+abstract public class Ticketing {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long codShop;
+	private int id;
+	
 	private int bigliettiEmessi;
 	private String luogo;
+	private int counterBiglietti;
 	
-	public Ticketing(int bigliettiEmessi, String luogo) {
+	public Ticketing(int bigliettiEmessi, String luogo, int counterBiglietti) {
 		this.bigliettiEmessi = bigliettiEmessi;
 		this.luogo = luogo;
+		this.counterBiglietti = counterBiglietti;
 	}
-	
-	
 	
 }

@@ -1,23 +1,23 @@
 package dao;
 
-import ch.qos.logback.classic.Logger;
 import entities.Tessera;
 import utils.JpaUtils;
 
-public class TesseraDAO extends JpaUtils{
-	public void save(Tessera tess) {
+public class TesseraDAO extends JpaUtils {
 
+	public void save(Tessera tes) {
+		
 		try {
-
+			
 			t.begin();
-			em.persist(tess);
+			em.persist(tes);
 			t.commit();
-
-			System.out.println("Tessera inserito correttamente!");
-		} catch (Exception e) {
-			System.out.println("Errore nell'inserimento della tessera");
+			
+			System.out.println( "Tessera inserita correttamente" );
+		} catch(Exception e) {
+			System.out.println( "ERRORE durante l'inserimento della tessera!!" );
 		}
-
+		
 	}
-
+	
 }

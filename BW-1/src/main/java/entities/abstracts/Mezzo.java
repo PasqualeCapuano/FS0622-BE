@@ -1,5 +1,6 @@
 package entities.abstracts;
 
+import java.time.LocalDate;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -29,7 +30,7 @@ abstract public class Mezzo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String targa;
+	private int id;
 	
 	private int capienza;
 	@Enumerated(EnumType.STRING)

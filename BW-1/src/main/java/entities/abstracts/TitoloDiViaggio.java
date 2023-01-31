@@ -17,26 +17,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="titoli_di_viaggio")
+@Table(name = "titoli_di_viaggio")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "titoli_di_viaggio_type", discriminatorType = DiscriminatorType.STRING)
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class TitoloDiViaggio {
+abstract public class TitoloDiViaggio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long codTitoloViaggio;
+	private int id;
+	
 	private LocalDate dataEmissione;
 	private LocalDate dataScadenza;
-	private boolean validita;
 	
-	public TitoloDiViaggio(LocalDate dataEmissione, LocalDate dataScadenza, boolean validita) {
+	public TitoloDiViaggio(LocalDate dataEmissione, LocalDate dataScadenza) {
 		this.dataEmissione = dataEmissione;
 		this.dataScadenza = dataScadenza;
-		this.validita = validita;
 	}
-	
 	
 }

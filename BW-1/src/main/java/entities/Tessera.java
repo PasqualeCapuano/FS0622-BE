@@ -9,12 +9,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "tessere")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Tessera extends Utente{
+public class Tessera extends Utente {
 
 	private LocalDate dataEmissione;
 	//private LocalDate dataScadenza = dataEmissione.plusYears(1L);

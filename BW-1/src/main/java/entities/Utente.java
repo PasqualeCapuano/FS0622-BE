@@ -1,14 +1,10 @@
 package entities;
 
 import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,9 +18,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Utente {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codUtente;
+	
 	private String nome;
 	private String cognome;
 	private String email;
@@ -37,6 +35,5 @@ public class Utente {
 		this.cognome = cognome;
 		this.email = email;
 	}
-	
 	
 }

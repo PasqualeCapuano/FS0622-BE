@@ -1,7 +1,6 @@
 package utils;
 
 import dao.MezzoDAO;
-import java.io.*;
 import entities.Autobus;
 import entities.Tram;
 import enums.TappeAutobus;
@@ -10,7 +9,7 @@ import enums.TipoMezzo;
 
 public class Gestionale {
 
-	public static void runGestionale() {
+	public static void addMezzi() {
 		
 		Autobus a1 = new Autobus(80, TipoMezzo.AUTOBUS, true, "780", TappeAutobus.TERMINI, TappeAutobus.CASTEL_SANT_ANGELO);
 		Autobus a2 = new Autobus(80, TipoMezzo.AUTOBUS, true, "8", TappeAutobus.CASTEL_SANT_ANGELO, TappeAutobus.CHIESA_NUOVA);
