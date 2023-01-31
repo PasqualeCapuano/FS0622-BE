@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import entities.abstracts.Mezzo;
@@ -16,7 +18,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Autobus extends Mezzo{
+	@Enumerated(EnumType.STRING)
 	private TappeAutobus capolinea;
+	@Enumerated(EnumType.STRING)
 	private TappeAutobus partenza;
 	
 	public Autobus(int capienza, TipoMezzo tipoMezzo, boolean inServizio, TappeAutobus capolinea,

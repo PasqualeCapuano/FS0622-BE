@@ -1,7 +1,8 @@
 package entities.abstracts;
 
 import javax.persistence.Entity;
-
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ public abstract class Mezzo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String targa;
 	private int capienza;
+	@Enumerated(EnumType.STRING)
 	private TipoMezzo tipoMezzo;
 	private boolean inServizio;
 	
