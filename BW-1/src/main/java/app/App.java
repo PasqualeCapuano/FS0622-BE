@@ -6,7 +6,8 @@ import utils.Menu;
 public class App {
 
 	public static void main(String[] args) {
-		Gestionale.runGestionale();
+		Gestionale.counter();
+		//Gestionale.runGestionale();
 		Menu.runApp();
 	}
 }

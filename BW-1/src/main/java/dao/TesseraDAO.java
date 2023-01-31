@@ -13,9 +13,9 @@ public class TesseraDAO extends JpaUtils{
 			em.persist(tess);
 			t.commit();
 
-			System.out.println("Elemento inserito correttamente!");
+			System.out.println("Tessera inserito correttamente!");
 		} catch (Exception e) {
-			System.out.println("Errore nell'inserimento dell'Elemento");
+			System.out.println("Errore nell'inserimento della tessera");
 		}
 
 	}

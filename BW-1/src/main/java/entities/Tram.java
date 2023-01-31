@@ -24,8 +24,11 @@ public class Tram extends Mezzo {
 	@Enumerated(EnumType.STRING)
 	private TappeTram partenza;
 	
-	public Tram(int capienza, TipoMezzo tipoMezzo, boolean inServizio, TappeTram capolinea, TappeTram partenza) {
+	private String numero;
+	
+	public Tram(int capienza, TipoMezzo tipoMezzo, boolean inServizio, String numero, TappeTram capolinea, TappeTram partenza) {
 		super(capienza, tipoMezzo, inServizio);
+		this.numero = numero;
 		this.capolinea = capolinea;
 		this.partenza = partenza;
 	}

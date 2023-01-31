@@ -19,15 +19,17 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Autobus extends Mezzo{
 	@Enumerated(EnumType.STRING)
-	private TappeAutobus capolinea;
-	@Enumerated(EnumType.STRING)
 	private TappeAutobus partenza;
+	@Enumerated(EnumType.STRING)
+	private TappeAutobus capolinea;
 	
-	public Autobus(int capienza, TipoMezzo tipoMezzo, boolean inServizio, TappeAutobus capolinea,
-			TappeAutobus partenza) {
+	private String numero;
+	
+	public Autobus(int capienza, TipoMezzo tipoMezzo, boolean inServizio, String numero, TappeAutobus partenza, TappeAutobus capolinea) {
 		super(capienza, tipoMezzo, inServizio);
-		this.capolinea = capolinea;
+		this.numero = numero;
 		this.partenza = partenza;
+		this.capolinea = capolinea;
 	}
 	
 	

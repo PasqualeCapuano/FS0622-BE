@@ -1,8 +1,14 @@
 package enums;
 
 public enum TappeAutobus {
-	E,
-	F,
-	G,
-	H
+
+	TERMINI,
+	QUIRINALE,
+	PIAZZA_VENEZIA,
+	ARGENTINA,
+	CHIESA_NUOVA,
+	PONTE_VITTORIO_EMANUELE,
+	TRANSPONTINA,
+	CASTEL_SANT_ANGELO
+	
 }

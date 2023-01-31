@@ -12,9 +12,9 @@ public class TitoloDiViaggioDAO extends JpaUtils{
 			em.persist(tit);
 			t.commit();
 
-			System.out.println("Elemento inserito correttamente!");
+			System.out.println("Ticket inserito correttamente!");
 		} catch (Exception e) {
-			System.out.println("Errore nell'inserimento dell'Elemento" + e);
+			System.out.println("Errore nell'inserimento del ticket" + e);
 		}
 
 	}

@@ -12,9 +12,9 @@ public class MezzoDAO extends JpaUtils{
 			em.persist(m);
 			t.commit();
 
-			System.out.println("Elemento inserito correttamente!");
+			System.out.println("Mezzo inserito correttamente!");
 		} catch (Exception e) {
-			System.out.println("Errore nell'inserimento dell'Elemento");
+			System.out.println("Errore nell'inserimento del mezzo");
 		}
 
 	}

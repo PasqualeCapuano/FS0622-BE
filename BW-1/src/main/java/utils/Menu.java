@@ -33,11 +33,11 @@ public class Menu {
 	public static void runApp() {
 
 		try {
-			System.out.println("-------------Benvenuto a Roma--------------");
+			System.out.println("Benvenuto a Roma!");
 			System.out.println("-------------------------------------------");
 			System.out.println("1 - Stazione Termini");
 			System.out.println("2 - Stazione Tiburtina");
-			System.out.println("------ Da che stazione vuoi partire? ------");
+			System.out.println("Da che stazione vuoi partire? <---");
 			int selezione = sc.nextInt();
 			sc.nextLine();
 
@@ -55,7 +55,7 @@ public class Menu {
 			System.out.println("1 - Acquista tessera");
 			System.out.println("2 - Acquista titolo di viaggio");
 			System.out.println("3 - Sali a bordo di:");
-			System.out.println("------ Da che stazione vuoi partire? ------");
+			System.out.println("Cosa vuoi fare? <---");
 			int selezione2 = sc.nextInt();
 			sc.nextLine();
 			switch (selezione2) {
@@ -66,7 +66,7 @@ public class Menu {
 				acquistaTitoloDiViaggio();
 				break;
 			case (3):
-				System.out.println("Hai scelto Stazione Tiburtina");
+				scegliMezzo();
 				break;
 			default:
 				logger.error("Valore non presente nella lista!");
@@ -100,7 +100,7 @@ public class Menu {
 	public static void acquistaTitoloDiViaggio() {
 		System.out.println("1 - Biglietto ordinario");
 		System.out.println("2 - Abbonamento");
-		System.out.println("Scegli cosa comprare e muoviti----------------");
+		System.out.println("Scegli cosa comprare <---");
 		int selezione3 = sc.nextInt();
 
 		switch (selezione3) {
@@ -116,33 +116,21 @@ public class Menu {
 	}
 
 	public static void scegliMezzo() {
-
+		
 	}
 
-	public static Autobus saveAutobus() {
-		Autobus aut = new Autobus(50, TipoMezzo.AUTOBUS, true, TappeAutobus.E, TappeAutobus.H);
-
-		MezzoDAO mezzoDAO = new MezzoDAO();
-		mezzoDAO.save(aut);
-		return aut;
-	}
-
-	public static Tram saveTram() {
-		Tram t = new Tram(50, TipoMezzo.TRAM, true, TappeTram.A, TappeTram.D);
-
-		MezzoDAO mezzoDAO = new MezzoDAO();
-		mezzoDAO.save(t);
-		return t;
-	}
-
+	
 	public static Biglietto saveBiglietto() {
-		Biglietto b = new Biglietto(LocalDate.parse("2023-02-08"), LocalDate.parse("2023-02-10"),
-				LocalDate.parse("2023-02-09"), true);
+		Biglietto b = new Biglietto();
+		b.setDataEmissione(LocalDate.now());
+		b.setDataScadenza(LocalDate.now().plusDays(1));
 
 		TitoloDiViaggioDAO titoloDiViaggioDAO = new TitoloDiViaggioDAO();
 		titoloDiViaggioDAO.save(b);
 		return b;
 	}
+
+	
 	public static void acquistaAbbonamento() {
 		System.out.println("Inserisci il tuo numero tessera");
 		long nTessera = sc.nextLong();
