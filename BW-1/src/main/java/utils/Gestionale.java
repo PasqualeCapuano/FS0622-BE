@@ -1,6 +1,7 @@
 package utils;
 
 import dao.MezzoDAO;
+import java.io.*;
 import entities.Autobus;
 import entities.Tram;
 import enums.TappeAutobus;
@@ -44,21 +45,24 @@ public class Gestionale {
 	}
 	
 	public static void counter() {
+		final String ANSI_RESET = "\u001B[0m";
+		final String ANSI_RED = "\u001B[31m";
+		final String ANSI_BACKGROUND = "\u001B[41m";
 		long endTime = System.currentTimeMillis() + (3 * 1000);
 	    int count = 0;
-	    System.out.println("Caricamento dati");
+	    System.out.println("Caricamento dati" );
 	    while (System.currentTimeMillis() < endTime) {
 	      try {
 	        Thread.sleep(250);
 	        count++;
-	        System.out.print(". ");
+	        System.out.print(ANSI_RED + ANSI_BACKGROUND + "." + ANSI_RESET + " ");
 	      } catch (InterruptedException e) {
 	        e.printStackTrace();
 	      }
 	    }
 	    System.out.println();
 	    System.out.println("Dati caricati con successo!");
-	    System.out.println("-------------------------------------------");
+	    System.out.println(ANSI_RED + "-------------------------------------------" + ANSI_RESET);
 	}
 	
 }

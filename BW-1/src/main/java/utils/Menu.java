@@ -1,5 +1,4 @@
 package utils;
-
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -31,10 +30,13 @@ public class Menu {
 	static final Logger logger = LoggerFactory.getLogger(JpaUtils.class);
 	
 	public static void runApp() {
+		final String ANSI_RESET = "\u001B[0m";
+		final String ANSI_RED = "\u001B[31m";
+		final String ANSI_BACKGROUND = "\u001B[41m";
 
 		try {
 			System.out.println("Benvenuto a Roma!");
-			System.out.println("-------------------------------------------");
+		    System.out.println(ANSI_RED + "-------------------------------------------" + ANSI_RESET);
 			System.out.println("1 - Stazione Termini");
 			System.out.println("2 - Stazione Tiburtina");
 			System.out.println("Da che stazione vuoi partire? <---");
