@@ -26,7 +26,7 @@ abstract public class Ticketing {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int ticketing_id;
 	
 	private int bigliettiEmessi;
 	private String luogo;

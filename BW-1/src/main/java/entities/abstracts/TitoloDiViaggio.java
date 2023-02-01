@@ -27,7 +27,7 @@ abstract public class TitoloDiViaggio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int titolo_id;
 	
 	private LocalDate dataEmissione;
 	private LocalDate dataScadenza;

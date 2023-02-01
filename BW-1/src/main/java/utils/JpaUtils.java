@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class JpaUtils {
 
 	private static final String persistenceUnit = "BW-1";
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
+	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
 	protected static final EntityManager em = emf.createEntityManager();
 	protected static final EntityTransaction t = em.getTransaction();
 

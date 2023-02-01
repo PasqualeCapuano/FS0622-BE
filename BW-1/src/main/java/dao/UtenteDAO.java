@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Abbonamento;
 import entities.Utente;
 import utils.JpaUtils;
 
@@ -30,16 +31,19 @@ public class UtenteDAO extends JpaUtils {
 		return e;
 	}
 	
-	public static void updateUtenteById(long id) {
+	public static void updateUtenteById(long id, Abbonamento abbonamento) {
 		Utente u = em.find(Utente.class, id);
+
 		
 		if(u == null) {
 			System.out.println("Errore, questo utente non esiste!");
 			return;
 		}
 		
+		
 		try {
 			u.setAbbonamentoattivo(true);
+			u.setAbbonamento(abbonamento);
 			
 			t.begin();
 			em.persist(u);

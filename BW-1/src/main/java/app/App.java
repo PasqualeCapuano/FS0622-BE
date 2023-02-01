@@ -1,5 +1,6 @@
 package app;
 
+import dao.TesseraDAO;
 import utils.Gestionale;
 import utils.Menu;
 

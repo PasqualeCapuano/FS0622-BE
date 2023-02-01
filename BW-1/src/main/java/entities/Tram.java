@@ -22,17 +22,17 @@ import lombok.Setter;
 public class Tram extends Mezzo {
 
 	@Enumerated(EnumType.STRING)
-	private TappeTram capolinea;
-	@Enumerated(EnumType.STRING)
 	private TappeTram partenza;
+	@Enumerated(EnumType.STRING)
+	private TappeTram capolinea;
 	
 	private String numero;
 	
-	public Tram(int capienza, TipoMezzo tipoMezzo, boolean inServizio, String numero, TappeTram capolinea, TappeTram partenza) {
-		super(capienza, tipoMezzo, inServizio);
+	public Tram(int capienza, boolean inServizio, String numero, TappeTram partenza, TappeTram capolinea) {
+		super(capienza, inServizio);
 		this.numero = numero;
-		this.capolinea = capolinea;
 		this.partenza = partenza;
+		this.capolinea = capolinea;
 	}	
 	
 }

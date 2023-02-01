@@ -2,6 +2,7 @@ package entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,8 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Abbonamento extends TitoloDiViaggio {
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "codice_utente")
+	@OneToOne(mappedBy = "abbonamento")
 	private Utente utente;
 	private boolean validita = true;
 	@Enumerated(EnumType.STRING)

@@ -28,8 +28,8 @@ public class Autobus extends Mezzo {
 	
 	private String numero;
 	
-	public Autobus(int capienza, TipoMezzo tipoMezzo, boolean inServizio, String numero, TappeAutobus partenza, TappeAutobus capolinea) {
-		super(capienza, tipoMezzo, inServizio);
+	public Autobus(int capienza, boolean inServizio, String numero, TappeAutobus partenza, TappeAutobus capolinea) {
+		super(capienza, inServizio);
 		this.numero = numero;
 		this.partenza = partenza;
 		this.capolinea = capolinea;

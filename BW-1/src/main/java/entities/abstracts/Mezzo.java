@@ -30,16 +30,15 @@ abstract public class Mezzo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int mezzo_id;
 	
 	private int capienza;
-	@Enumerated(EnumType.STRING)
-	private TipoMezzo tipoMezzo;
+//	@Enumerated(EnumType.STRING)
+//	private TipoMezzo tipoMezzo;
 	private boolean inServizio;
 	
-	public Mezzo(int capienza, TipoMezzo tipoMezzo, boolean inServizio) {
+	public Mezzo(int capienza, boolean inServizio) {
 		this.capienza = capienza;
-		this.tipoMezzo = tipoMezzo;
 		this.inServizio = inServizio;
 	}
 	

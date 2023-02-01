@@ -11,19 +11,19 @@ public class Gestionale {
 
 	public static void addMezzi() {
 		
-		Autobus a1 = new Autobus(80, TipoMezzo.AUTOBUS, true, "780", TappeAutobus.TERMINI, TappeAutobus.CASTEL_SANT_ANGELO);
-		Autobus a2 = new Autobus(80, TipoMezzo.AUTOBUS, true, "8", TappeAutobus.CASTEL_SANT_ANGELO, TappeAutobus.CHIESA_NUOVA);
-		Autobus a3 = new Autobus(80, TipoMezzo.AUTOBUS, false, "071", TappeAutobus.PIAZZA_VENEZIA, TappeAutobus.TRANSPONTINA);
-		Autobus a4 = new Autobus(80, TipoMezzo.AUTOBUS, true, "720", TappeAutobus.TRANSPONTINA, TappeAutobus.QUIRINALE);
+		Autobus a1 = new Autobus(80, true, "780", TappeAutobus.STAZIONE_TERMINI, TappeAutobus.CASTEL_SANT_ANGELO);
+		Autobus a2 = new Autobus(80, true, "8", TappeAutobus.CASTEL_SANT_ANGELO, TappeAutobus.CHIESA_NUOVA);
+		Autobus a3 = new Autobus(80, false, "071", TappeAutobus.PIAZZA_VENEZIA, TappeAutobus.TRANSPONTINA);
+		Autobus a4 = new Autobus(80, true, "720", TappeAutobus.STAZIONE_TIBURTINA, TappeAutobus.QUIRINALE);
 		saveAutobus(a1);
 		saveAutobus(a2);
 		saveAutobus(a3);
 		saveAutobus(a4);
 		
-		Tram t1 = new Tram(100, TipoMezzo.TRAM, false, "2", TappeTram.CASALETTO, TappeTram.MINISTERO_PUBBLICA_ISTRUZIONE);
-		Tram t2 = new Tram(100, TipoMezzo.TRAM, true, "5", TappeTram.COLLI_PORTUENSI, TappeTram.PONTE_BIANCO);
-		Tram t3 = new Tram(100, TipoMezzo.TRAM, true, "14", TappeTram.SAN_GIOVANNI, TappeTram.STAZIONE_TRASTEVERE);
-		Tram t4 = new Tram(100, TipoMezzo.TRAM, true, "19", TappeTram.MINISTERO_PUBBLICA_ISTRUZIONE, TappeTram.GIANICOLENSE);
+		Tram t1 = new Tram(100, false, "2", TappeTram.STAZIONE_TERMINI, TappeTram.MINISTERO_PUBBLICA_ISTRUZIONE);
+		Tram t2 = new Tram(100, true, "5", TappeTram.COLLI_PORTUENSI, TappeTram.PONTE_BIANCO);
+		Tram t3 = new Tram(100, true, "14", TappeTram.STAZIONE_TIBURTINA, TappeTram.STAZIONE_TRASTEVERE);
+		Tram t4 = new Tram(100, true, "19", TappeTram.MINISTERO_PUBBLICA_ISTRUZIONE, TappeTram.GIANICOLENSE);
 		saveTram(t1);
 		saveTram(t2);
 		saveTram(t3);
