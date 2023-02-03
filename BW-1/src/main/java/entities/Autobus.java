@@ -7,8 +7,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import entities.abstracts.Mezzo;
-import enums.TappeAutobus;
-import enums.TipoMezzo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,19 +18,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Autobus extends Mezzo {
-
-	@Enumerated(EnumType.STRING)
-	private TappeAutobus partenza;
-	@Enumerated(EnumType.STRING)
-	private TappeAutobus capolinea;
 	
-	private String numero;
-	
-	public Autobus(int capienza, boolean inServizio, String numero, TappeAutobus partenza, TappeAutobus capolinea) {
-		super(capienza, inServizio);
-		this.numero = numero;
-		this.partenza = partenza;
-		this.capolinea = capolinea;
+	public Autobus(int capienza, boolean inServizio, Tratta tratta, String numero) {
+		super(capienza, inServizio, tratta, numero);
 	}
 	
 }

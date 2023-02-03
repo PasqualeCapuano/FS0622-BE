@@ -2,22 +2,24 @@ package entities.abstracts;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import enums.TipoMezzo;
+import entities.Tratta;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "mezzi")
@@ -33,13 +35,28 @@ abstract public class Mezzo {
 	private int mezzo_id;
 	
 	private int capienza;
-//	@Enumerated(EnumType.STRING)
-//	private TipoMezzo tipoMezzo;
 	private boolean inServizio;
 	
-	public Mezzo(int capienza, boolean inServizio) {
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "tratte_id", referencedColumnName = "tratta_id")
+	private Tratta tratta;
+	
+	private String numero;
+	private int bigliettiVidimati;
+	private int nCorse;
+	private LocalDate inizioManutenzione;
+	private LocalDate fineManutenzione;
+
+	public Mezzo(int capienza, boolean inServizio, Tratta tratta, String numero) {
 		this.capienza = capienza;
 		this.inServizio = inServizio;
+		this.tratta = tratta;
+		this.numero = numero;
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName().toUpperCase() + " " + numero + " - Partenza: " + tratta.getPartenza() + " - Arrivo: " + tratta.getCapolinea() + " - durata media: " + tratta.getTempoPercorrenza();
 	}
 	
 }

@@ -31,11 +31,13 @@ abstract public class Ticketing {
 	private int bigliettiEmessi;
 	private String luogo;
 	private int counterBiglietti;
+	private int abbonamentiEmessi;
 	
-	public Ticketing(int bigliettiEmessi, String luogo, int counterBiglietti) {
+	public Ticketing(int bigliettiEmessi, String luogo, int counterBiglietti, int abbonamentiEmessi) {
 		this.bigliettiEmessi = bigliettiEmessi;
 		this.luogo = luogo;
 		this.counterBiglietti = counterBiglietti;
+		this.abbonamentiEmessi = abbonamentiEmessi;
 	}
 	
 }

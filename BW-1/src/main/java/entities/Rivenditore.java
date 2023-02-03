@@ -17,8 +17,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Rivenditore extends Ticketing {
 	
-	public Rivenditore(int bigliettiEmessi, String luogo, int counterBiglietti) {
-		super(bigliettiEmessi, luogo, counterBiglietti);
+	public Rivenditore(int bigliettiEmessi, String luogo, int counterBiglietti, int abbonamentiEmessi) {
+		super(bigliettiEmessi, luogo, counterBiglietti, abbonamentiEmessi);
 	}
 	
 }

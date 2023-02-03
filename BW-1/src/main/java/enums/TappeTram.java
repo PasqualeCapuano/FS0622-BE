@@ -2,13 +2,22 @@ package enums;
 
 public enum TappeTram {
 
-	STAZIONE_TERMINI,
-	COLLI_PORTUENSI,
-	SAN_GIOVANNI,
-	GIANICOLENSE,
-	SAN_CAMILLO,
-	PONTE_BIANCO,
-	STAZIONE_TRASTEVERE,
-	MINISTERO_PUBBLICA_ISTRUZIONE,
-	STAZIONE_TIBURTINA
+	COLLI_PORTUENSI(7),
+    SAN_GIOVANNI(12),
+    GIANICOLENSE(11),
+    SAN_CAMILLO(4),
+    PONTE_BIANCO(7),
+    STAZIONE_TRASTEVERE(9),
+    MINISTERO_PUBBLICA_ISTRUZIONE(8);
+	
+	private final int minuti;
+
+	TappeTram(int i) {
+		this.minuti = i;
+	}
+	
+	public int getMinuti() {
+		return minuti;
+	}
+	
 }

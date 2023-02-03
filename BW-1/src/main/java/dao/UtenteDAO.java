@@ -5,7 +5,8 @@ import entities.Utente;
 import utils.JpaUtils;
 
 public class UtenteDAO extends JpaUtils {
-
+	
+	//metodo per salvare i dati nel DB
 	public void save(Utente u) {
 		
 		try {
@@ -21,6 +22,7 @@ public class UtenteDAO extends JpaUtils {
 		
 	}
 	
+	//recupera l'utente dall'id
 	public Utente getUtenteById(long id) {
 		Utente e = em.find(Utente.class, id);
 		
@@ -31,18 +33,16 @@ public class UtenteDAO extends JpaUtils {
 		return e;
 	}
 	
+	//modifica la validità di un abbonamento a TRUE
 	public static void updateUtenteById(long id, Abbonamento abbonamento) {
 		Utente u = em.find(Utente.class, id);
-
 		
 		if(u == null) {
 			System.out.println("Errore, questo utente non esiste!");
 			return;
 		}
 		
-		
 		try {
-			u.setAbbonamentoattivo(true);
 			u.setAbbonamento(abbonamento);
 			
 			t.begin();

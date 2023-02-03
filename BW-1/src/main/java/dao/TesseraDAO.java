@@ -10,6 +10,8 @@ import utils.JpaUtils;
 
 public class TesseraDAO extends JpaUtils {
 
+	
+	//metodo per salvare i dati nel DB
 	public void save(Tessera tes) {
 		
 		try {
@@ -25,6 +27,8 @@ public class TesseraDAO extends JpaUtils {
 		
 	}
 	
+	
+	//metodo per modificare la validità della tessera nel DB (query la trovi in classe TESSERA)
 	public static void update() {
 		t.begin();
 		
@@ -34,6 +38,8 @@ public class TesseraDAO extends JpaUtils {
 		t.commit();
 	}
 	
+	
+	//metodo per recuperare i dati della tessera (validità di tessera e abbonamento)
 	public static void getDatiTessera(long id) {
 		Tessera t = em.find(Tessera.class, id);
 		
@@ -53,8 +59,22 @@ public class TesseraDAO extends JpaUtils {
 		} else {
 			System.out.println("La tessera è scaduta! Rinnovala!");
 		}
+		
+		try {
+			boolean validitaAbbonamento = t.getAbbonamento().isValidita();
+			if(validitaAbbonamento == true) {
+				System.out.println("Hai un abbonamento attivo che scade il " + t.getAbbonamento().getDataScadenza());
+			} else {
+				System.out.println("Non hai un abbonamento attivo!");
+			}
+		} catch (Exception e) {
+			System.out.println("Nessun abbonamento attivo!");
+		}
+
 	}
 	
+	
+	//metodo per rinnovare la tessera (se scaduta modifica la validità a TRUE e inserisce la nuova data di scadenza ad un anno di distanza)	
 	public static void rinnovaTessera(long id) {
 		Tessera tes = em.find(Tessera.class, id);
 		
