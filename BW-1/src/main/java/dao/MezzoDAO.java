@@ -57,7 +57,6 @@ public class MezzoDAO extends JpaUtils {
 	
 	
 	//metodo per mandare in manutenzione ogni 10 corse il mezzo
-	
 	public static void queryManutenzione() {
 		
 		t.begin();

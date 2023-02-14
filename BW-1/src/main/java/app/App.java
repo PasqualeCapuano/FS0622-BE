@@ -16,7 +16,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		
-		//Gestionale.counter();
+		Gestionale.counter();
 		//Menu.runApp();
 		
 		TitoloDiViaggioDAO.conteggioTitoli(Biglietto.class, LocalDate.now(), LocalDate.now().plusDays(30));
